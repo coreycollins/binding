@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"net/http"
 	"strings"
+	"fmt"
 )
 
 // This file shamelessly adapted from martini-contrib/binding
@@ -109,7 +110,7 @@ func (e Error) Kind() string {
 
 // Error returns this error's message.
 func (e Error) Error() string {
-	return e.Message
+	return fmt.Sprintf("%v: %s", e.FieldNames, e.Message)
 }
 
 const (
